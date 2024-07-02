@@ -2,27 +2,38 @@
 
 public class Employee
 {
-    private Guid _ID { get; set; }
+    private Guid _ID;
+    public Guid ID { get => _ID; set => _ID = value; }
+    
+    private string _FirstName;
+    public string FirstName { get => _FirstName; set => _FirstName = value; }
 
-    private string _FirstName { get; set; }
+    private string _LastName;
+    public string LastName { get => _LastName; set => _LastName = value; }
 
-    private string _LastName { get; set; }
+    private byte _Age;
+    public byte Age { get => _Age; set => _Age = value; }
 
-    private byte _Age { get; set; }
+    private string _Gender;
+    public string Gender { get => _Gender; set => _Gender = value; }
 
-    private string _Gender { get; set; }
+    private string _Email;
+    public string Email { get => _Email; set => _Email = value; }
 
-    private string _Email { get; set; }
+    private string _Phone;
+    public string Phone { get => _Phone; set => _Phone = value; }
 
-    private string _Phone { get; set; }
+    private string _JobTitle;
+    public string JobTitle { get => JobTitle; set => JobTitle = value; }
 
-    private string _JobTitle { get; set; }
+    private string _Address;
+    public string Address { get => _Address; set => _Address = value; }
 
-    private string _Address { get; set; }
+    private string _IBAN;
+    public string IBAN { get => _IBAN; set => _IBAN = value; }
 
-    private string _IBAN { get; set; }
-
-    private double _Salary { get; set; }
+    private double _Salary;
+    public double Salary { get => _Salary; set => _Salary = value; }
 
     public Employee(string CsvRepresentation)
     {
@@ -55,8 +66,28 @@ public class Employee
         _Salary = salary;
     }
 
+    public Employee(Guid guid, string firstName, string lastName, byte age, string gender, string email, string phone, string jobTitle, string address, string iban, double salary)
+    {
+        _ID = guid;
+        _FirstName = firstName;
+        _LastName = lastName;
+        _Age = age;
+        _Gender = gender;
+        _Email = email;
+        _Phone = phone;
+        _JobTitle = jobTitle;
+        _Address = address;
+        _IBAN = iban;
+        _Salary = salary;
+    }
+
     public string ToCsvString()
     {
-        return $"{_ID};{_FirstName};{_LastName};{_Age};{_Gender};{_Email};{_Phone};{_JobTitle};{_Address};{_IBAN};{_Salary}";
+        return $"{ID};{FirstName};{LastName};{Age};{Gender};{Email};{Phone};{JobTitle};{Address};{IBAN};{Salary}";
+    }
+
+    public string ToSqlRepresentation()
+    {
+        return $"{ID},{FirstName},{LastName},{Age},{Gender},{Email},{Phone},{JobTitle},{Address},{IBAN},{Salary}";
     }
 }
