@@ -7,7 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Compile Update="AddEquipmentPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DeleteDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DetailEquipment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditEqupimentPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AddEquipmentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DeleteDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DetailEquipment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditEqupimentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EquipmentLandingPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

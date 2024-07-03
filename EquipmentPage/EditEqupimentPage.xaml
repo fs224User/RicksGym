@@ -1,0 +1,43 @@
+﻿<Window x:Class="EquipmentPage.EditEqupimentPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipmentPage"
+        mc:Ignorable="d"
+        Title="EditEqupimentPage" Height="850" Width="600">
+    <Grid>
+        <Image x:Name="image_Equipment" HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="211" OpacityMask="#FF080808" />
+        <Border x:Name="border_imageEquipment" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="324" Margin="10,10,0,0" VerticalAlignment="Top" Width="213"/>
+        <Label x:Name="label_Name" Content="Name" HorizontalAlignment="Left" Height="28" Margin="238,19,0,0" VerticalAlignment="Top" Width="110" BorderThickness="1" BorderBrush="Black"/>
+        <TextBox x:Name="textbox_Name" IsEnabled="True" HorizontalAlignment="Left" Height="28" Margin="360,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
+        <Label x:Name="label_Type" Content="Modell" HorizontalAlignment="Left" Height="28" Margin="238,122,0,0" VerticalAlignment="Top" Width="110" BorderThickness="1" BorderBrush="Black"/>
+        <TextBox x:Name="textbox_Type" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="360,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
+        <Label x:Name="label_Picture" Content="Bild" HorizontalAlignment="Left" Height="28" Margin="238,70,0,0" VerticalAlignment="Top" Width="110" BorderThickness="1" BorderBrush="Black"/>
+        <TextBox x:Name="textbox_Picture" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="360,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
+        <Label x:Name="label_Brand" Content="Brand" HorizontalAlignment="Left" Height="28" Margin="238,181,0,0" VerticalAlignment="Top" Width="110" BorderThickness="1" BorderBrush="Black"/>
+        <TextBox x:Name="textbox_Brand" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="360,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
+        <Label x:Name="label_AquisitionDate" Content="Ankaufsdatum" HorizontalAlignment="Left" Height="28" Margin="238,241,0,0" VerticalAlignment="Top" Width="110" BorderThickness="1" BorderBrush="Black"/>
+        <Label x:Name="label_AquisitionPrice" Content="Ankaufspreis" HorizontalAlignment="Left" Height="28" Margin="238,298,0,0" VerticalAlignment="Top" Width="110" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_Price" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="360,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="219"/>
+        <Label x:Name="label_MuscleGroup" Content="Muskelgruppe" HorizontalAlignment="Left" Height="28" Margin="10,355,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_MuscleGroup" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="186,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <Label x:Name="label_Status" Content="Status" HorizontalAlignment="Left" Height="28" Margin="10,401,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_Status" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="186,401,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <Label x:Name="label_Weight" Content="Gewicht" HorizontalAlignment="Left" Height="28" Margin="10,444,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_Weight" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="186,444,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <Label x:Name="label_nextMaintenance" Content="Nächste Wartung" HorizontalAlignment="Left" Height="28" Margin="10,496,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <Label x:Name="label_MaitenancePeriod" Content="Wartungsdauer" HorizontalAlignment="Left" Height="28" Margin="10,540,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_MaitenancePeriod" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="186,540,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <Label x:Name="label_EquipmentType" Content="Gerätetyp" HorizontalAlignment="Left" Height="28" Margin="10,586,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_EquipmentType" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="186,586,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <Label x:Name="label_Location" Content="Standort" HorizontalAlignment="Left" Height="28" Margin="10,628,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_Location" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="186,628,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <Label x:Name="label_Dimension" Content="Maße" HorizontalAlignment="Left" Height="28" Margin="10,679,0,0" VerticalAlignment="Top" Width="159" BorderThickness="1" BorderBrush="Black" RenderTransformOrigin="0.5,4.18"/>
+        <TextBox x:Name="textbox_Dimension" IsEnabled="True"  HorizontalAlignment="Left" Height="28" Margin="186,679,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="393"/>
+        <Button x:Name="btn_Save" Content="Speichern" HorizontalAlignment="Left" Height="39" Margin="300,725,0,0" VerticalAlignment="Top" Width="100" Click="btn_Save_Click"/>
+        <Button x:Name="btn_Cancel" Content="Abbrechen" HorizontalAlignment="Left" Height="39" Margin="433,725,0,0" VerticalAlignment="Top" Width="101" Click="btn_Cancel_Click"/>
+        <DatePicker x:Name="picker_AquisitionDate" HorizontalAlignment="Left" Height="28" Margin="360,241,0,0" VerticalAlignment="Top" Width="219"/>
+        <DatePicker x:Name="picker_NextMaintenance" HorizontalAlignment="Left" Height="28" Margin="186,496,0,0" VerticalAlignment="Top" Width="393"/>
+    </Grid>
+</Window>
