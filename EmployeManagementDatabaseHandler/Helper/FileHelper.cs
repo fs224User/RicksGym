@@ -7,18 +7,11 @@ public static class FileHelper
 {
     private static readonly string _HeaderRow = "ID;FirstName;LastName;Email;Telephone;JobTitle;Salary;IBAN;Gender;Address;Birthdate;StartDate";
 
-    private static readonly string _FileStore = $"C:/Users/{Environment.UserName}/Downloads";
-
-    //private static readonly StringBuilder _Builder = new StringBuilder();
-
-    //private static readonly StreamWriter _Writer = new(new FileStream(_FileStore, FileMode.Open, FileAccess.Write));
-
-    //private static readonly StreamReader _Reader = new(new FileStream(_FileStore, FileMode.Open, FileAccess.Read));
-
+    private static readonly string _FileStore = $"C:/Users/{Environment.UserName}/Downloads/ExportedUsers.csv";
 
     public static void ExportToCSV(string path, List<Employee> employees)
     {
-        using var _Writer = new StreamWriter(new FileStream(_FileStore, FileMode.Open, FileAccess.Write));
+        using var _Writer = new StreamWriter(new FileStream(_FileStore, FileMode.OpenOrCreate, FileAccess.ReadWrite));
         var _Builder = new StringBuilder();
         _Builder.AppendLine(_HeaderRow);
         foreach (var e in employees)

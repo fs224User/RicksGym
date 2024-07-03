@@ -46,41 +46,56 @@ public static class DatabaseHelper
         var employees = new List<Employee>();
         try
         {
-            using var Connection = new OracleConnection(_ConnectionString);
-            Connection.Open();
-            using var Command = new OracleCommand();
-            Command.CommandText = "SELECT * FROM GYM_PERSONAL";
-            var execution = Command.ExecuteReader();
             StringBuilder builder = new();
-
-            while (execution.Read())
+            using (var Connection = new OracleConnection(_ConnectionString))
             {
-                for (byte i = 0; i < execution.FieldCount; i++)
+                using var Command = new OracleCommand("SELECT * FROM GYM_PERSONAL", Connection);
+                Command.Connection.Open();
+                var execution = Command.ExecuteReader();
+                while (execution.Read())
                 {
-                    builder.Append(execution.GetString(i) + ";");
+                    for (byte i = 0; i < execution.FieldCount; i++)
+                    {
+                        builder.Append(execution.GetString(i) + ";");
+                    }
+
+                    employees.Add(new Employee(builder.ToString()));
+                    builder.Clear();
                 }
-
-                employees.Add(new Employee(builder.ToString()));
-                builder.Clear();
             }
-
         }
 
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.Message + "\n" + ex.GetType());
         }
         return employees;
     }
 
-    public static void WriteEmployeeToDatabase(Employee employee)
+    public static void InsertEmployeeInDatabase(Employee employee)
+    {
+        try
+        {
+            //"ID;FirstName;LastName;Email;Telephone;JobTitle;Salary;IBAN;Gender;Address;Birthdate;StartDate"
+            using var Connection = new OracleConnection(_ConnectionString);
+            using var Command = new OracleCommand($"INSERT INTO GYM_PERSONAL \nVALUES ({employee.ToSqlRepresentation()})", Connection);
+            Command.Connection.Open();
+            Command.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message+"\n");
+        }
+    }
+
+    public static void DeleteUserFromDatabase(Employee employee)
     {
         try
         {
             using var Connection = new OracleConnection(_ConnectionString);
             Connection.Open();
             using var Command = new OracleCommand();
-            Command.CommandText = $"INSERT INTO GYM_PERSONAL VALUES ({employee.ToSqlRepresentation()})";
+            Command.CommandText = $"DELETE FROM GYM_PERSONAL WHERE TRAINER_ID = {employee.ID}";
             Command.ExecuteNonQuery();
         }
         catch (Exception ex)
