@@ -1,0 +1,61 @@
+﻿<Window x:Class="EmployeeManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeManagement"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <DockPanel Height="40" Background="LightBlue">
+            <Button Name="btnMenu" Content="menu"  Margin="20 0" />
+            <TextBlock Name="tbHeader" Text="Personalverwaltung" VerticalAlignment="Center" FontSize="20"/>
+            <Button Name="btnOptions" Content="options" DockPanel.Dock="Right" Margin="20 0"/>
+            <Button Name="btnSearch" Content="search" DockPanel.Dock="Right"/>
+            <TextBox Name="tbSearch" DockPanel.Dock="Right" Width="150" Height="20" Margin="0 0 5 0"/>
+            <Separator DockPanel.Dock="Right" Visibility="Hidden"/>
+        </DockPanel>
+
+        <TabControl>
+            <TabControl.Resources>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Background" Value="LightBlue" />
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem Name="tabPersonal" Header="Personal" Width="100">
+                <StackPanel>
+                    <DockPanel>
+                        <Button Name="btnAddEmployee" Content="Person hinzufügen" DockPanel.Dock="Right" Margin="0 0 20 0" Click="btnAddEmployee_Click"/>
+                        <Button Name="btnExport" Content="Export" DockPanel.Dock="Right" Margin="20 0" Click="btnExport_Click"/>
+                        <Button Name="btnImport" Content="Import" DockPanel.Dock="Right" Click="btnImport_Click"/>
+                        <Separator DockPanel.Dock="Right" Visibility="Hidden" />
+                        <TextBlock Text="Personalliste" FontSize="20" Margin="20 0"/>
+                    </DockPanel>
+
+                    <ListView Name="lvEmployee" MaxHeight="1000" SelectionChanged="lvEmployee_SelectionChanged" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Vorname" DisplayMemberBinding="{Binding FirstName}" Width="300"/>
+                                <GridViewColumn Header="Nachname" DisplayMemberBinding="{Binding LastName}" Width="300"/>
+                                <GridViewColumn Header="Jobtitel" DisplayMemberBinding="{Binding JobTitle}" Width="300"/>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Name="tabShift" Header="Schichtplan" Width="100">
+                <StackPanel>
+                    <TextBlock Text="Hier könnte ihre Werbung stehen"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </StackPanel>
+</Window>
