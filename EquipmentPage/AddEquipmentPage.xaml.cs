@@ -48,7 +48,10 @@ namespace EquipmentPage
                 Dimension = textbox_Dimension.Text,
                 AquisitionDate = picker_AquisitionDate.SelectedDate,
                 NextMaintenance = picker_NextMaintenance.SelectedDate,
-        };
+            };
+            equipment.AquisitionCost = EquipmentValueConverter.GetPrice(textbox_Price.Text);
+            equipment.Status = EquipmentValueConverter.GetEnum(textbox_Status.Text);
+            equipment.MaintenanceDuration = EquipmentValueConverter.GetTimeSpan(textbox_MaitenancePeriod.Text);
 
             EquipmentObjects.Add(equipment);
             //TODO in DB speichern
