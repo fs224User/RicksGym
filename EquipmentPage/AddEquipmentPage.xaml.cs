@@ -20,13 +20,11 @@ namespace EquipmentPage
     public partial class AddEquipmentPage : Window
     {
         public List<Equipment> EquipmentObjects {  get; set; }
-        public EquipmentLandingPage EquipmentLandingPage { get; set; }
 
-        public AddEquipmentPage(List<Equipment> equipmentObjects, EquipmentLandingPage equipmentLandingPage)
+        public AddEquipmentPage(List<Equipment> equipmentObjects)
         {
             InitializeComponent();
             EquipmentObjects = equipmentObjects;
-            EquipmentLandingPage = equipmentLandingPage;
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
@@ -50,17 +48,10 @@ namespace EquipmentPage
                 Dimension = textbox_Dimension.Text,
                 AquisitionDate = picker_AquisitionDate.SelectedDate,
                 NextMaintenance = picker_NextMaintenance.SelectedDate,
-            };
-
-            equipment.AquisitionCost = EquipmentValueConverter.GetPrice(textbox_Price.Text);
-            equipment.Status = EquipmentValueConverter.GetEnum(textbox_Status.Text);
-            equipment.MaintenanceDuration = EquipmentValueConverter.GetTimeSpan(textbox_MaitenancePeriod.Text);
+        };
 
             EquipmentObjects.Add(equipment);
             //TODO in DB speichern
-            EquipmentLandingPage.UpdateSource(null,null);
-            EquipmentLandingPage.Activate();
-            this.Close();
         }
     }
 }

@@ -20,15 +20,11 @@ namespace EquipmentPage
     public partial class EditEqupimentPage : Window
     {
         public Equipment Equipment { get; set; }
-        public EquipmentLandingPage EquipmentLanding { get; set; }
-        public DetailEquipment DetailEquipment { get; set; }
 
-        public EditEqupimentPage(Equipment equipment, EquipmentLandingPage equipmentLanding, DetailEquipment detailEquipment)
+        public EditEqupimentPage(Equipment equipment)
         {
             InitializeComponent();
             Equipment = equipment; //Order is important
-            EquipmentLanding = equipmentLanding;
-            DetailEquipment = detailEquipment;
             SetTextBoxValues();
         }
 
@@ -66,16 +62,10 @@ namespace EquipmentPage
             Equipment.AquisitionCost = EquipmentValueConverter.GetPrice(textbox_Price.Text);
             Equipment.Status = EquipmentValueConverter.GetEnum(textbox_Status.Text);
             Equipment.MaintenanceDuration = EquipmentValueConverter.GetTimeSpan(textbox_MaitenancePeriod.Text);
-            EquipmentLanding.UpdateSource(null, null);
-            DetailEquipment.SetTextBoxValues();
-            DetailEquipment.Activate();
-            this.Close();
         }
 
         private void btn_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            EquipmentLanding.UpdateSource(null,null);
-            DetailEquipment.Activate();
             this.Close();
         }
     }

@@ -28,6 +28,7 @@ public class Equipment
     public static List<Equipment> GetTestData()
     {
         var list = new List<Equipment>();
+
         var equipment = new Equipment()
         {
             Id = Guid.NewGuid(),
@@ -74,52 +75,109 @@ public class Equipment
         var equipment5 = new Equipment()
         {
             Id = Guid.NewGuid(),
-            Name = "Laufband",
+            Name = "Laufband2",
             Brand = "Tobi OHG",
             MuscleGroup = "Ausdauer",
             Status = StatusEnum.Bereit,
-            AquisitionDate = DateTime.Now.AddDays(12),
+            AquisitionDate = DateTime.Now.AddDays(0),
             EquipmentType = "Ausdauer"
+        };
+
+        var equipment6 = new Equipment()
+        {
+            Id = Guid.NewGuid(),
+            Name = "Langhantel",
+            Brand = "Siemens",
+            MuscleGroup = "Brust",
+            Status = StatusEnum.Bereit,
+            AquisitionDate = DateTime.Now,
+            EquipmentType = "Freigerät"
+        };
+
+        var equipment7 = new Equipment()
+        {
+            Id = Guid.NewGuid(),
+            Name = "Beinpresse",
+            Brand = "BigBooty GmbH",
+            MuscleGroup = "Beine",
+            Status = StatusEnum.Defekt,
+            AquisitionDate = DateTime.Now.AddDays(-14),
+            EquipmentType = "Presse"
+        };
+
+        var equipment8 = new Equipment()
+        {
+            Id = Guid.NewGuid(),
+            Name = "Trizepsdrücken",
+            Brand = "Markus Rühl KG",
+            MuscleGroup = "Trizeps",
+            Status = StatusEnum.Defekt,
+            AquisitionDate = DateTime.Now.AddDays(-100),
+            EquipmentType = "Kabelzug"
+        };
+        var equipment9 = new Equipment()
+        {
+            Id = Guid.NewGuid(),
+            Name = "Latzugstange",
+            Brand = "Zander OHG",
+            MuscleGroup = "Rücken",
+            Status = StatusEnum.Defekt,
+            AquisitionDate = DateTime.Now.AddDays(12),
+            EquipmentType = "Hilfsmittel"
+        };
+
+        var equipment10 = new Equipment()
+        {
+            Id = Guid.NewGuid(),
+            Name = "Kurzhantel",
+            Brand = "Tobi OHG",
+            MuscleGroup = "Bizeps",
+            Status = StatusEnum.Bereit,
+            AquisitionDate = DateTime.Now.AddDays(-200),
+            EquipmentType = "Freigewicht"
         };
 
         list.Add(equipment);
         list.Add(equipment2);
         list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment);
-        list.Add(equipment2);
-        list.Add(equipment3);
-        list.Add(equipment4);
-        list.Add(equipment4);
         list.Add(equipment4);
         list.Add(equipment5);
+        list.Add(equipment6);
+        list.Add(equipment7);
+        list.Add(equipment8);
+        list.Add(equipment9);
+        list.Add(equipment10);
+
 
         return list;
     }
 
     public override string ToString()
     {
-        return $"Name: {Name}, Marke: {Brand}, Muskelgruppe: {MuscleGroup}, Status: {Status}, Gerätetyp: {EquipmentType}";
+        var sb = new StringBuilder();
+        var lengthNameToAdd = 40 - Name.Length;
+        var lengthBrandToAdd = 40 - Brand.Length;
+        var lengthMuscleGroupToAdd = 40 - MuscleGroup.Length;
+        var lengthEquipmentTypeToAdd = 40 - EquipmentType.Length;
+
+        AddChars(sb, Name ,"Name: ", lengthNameToAdd);
+        AddChars(sb,Brand, "Marke: ", lengthBrandToAdd);
+        AddChars(sb,MuscleGroup, "Muskelgruppe: ", lengthMuscleGroupToAdd);
+        AddChars(sb,EquipmentType, "Gerätetyp: ", lengthEquipmentTypeToAdd);
+        sb.Append($"Status: {Status}");
+        var test = sb.ToString().Length;
+        return sb.ToString();
+        //return $"Name: {Name}, Marke: {Brand}, Muskelgruppe: {MuscleGroup}, Status: {Status}, Gerätetyp: {EquipmentType}";
+    }
+
+    private void AddChars(StringBuilder stringBuilder, string name ,string toAdd ,int charsToAdd)
+    {
+        stringBuilder.Append(toAdd);
+        stringBuilder.Append(name);
+        for (int i = 0; i < charsToAdd; i++)
+        {
+            stringBuilder.Append(' ');
+        }
     }
 }
 

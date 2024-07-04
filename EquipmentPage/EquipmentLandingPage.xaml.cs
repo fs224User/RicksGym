@@ -133,26 +133,22 @@ namespace EquipmentPage
 
         private void btn_AddEquipment_Click(object sender, RoutedEventArgs e)
         {
-            var addEquipmentPage = new AddEquipmentPage(EquipmentObjects, this);
+            var addEquipmentPage = new AddEquipmentPage(EquipmentObjects);
             addEquipmentPage.Owner = this;
             addEquipmentPage.ShowDialog();
         }
 
         private void listView_EquipmentGeneralView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {   
-            if(listView_EquipmentGeneralView.SelectedItem is not null)
-            {
-                var item = (Equipment)listView_EquipmentGeneralView.SelectedItem;
-                var detailEquipmentPage = new DetailEquipment(item, EquipmentObjects, this);
-                detailEquipmentPage.Owner = this;
-                detailEquipmentPage.ShowDialog();
-            }
+        {
+            var item = (Equipment)listView_EquipmentGeneralView.SelectedItem;
+            var detailEquipmentPage = new DetailEquipment(item, EquipmentObjects);
+            detailEquipmentPage.Owner = this;
+            detailEquipmentPage.ShowDialog();
         }
 
-        public void UpdateSource(object sender, RoutedEventArgs e)
+        private void btn_UpdateData_Click(object sender, RoutedEventArgs e)
         {
-            listView_EquipmentGeneralView.ItemsSource = EquipmentObjects.ToList();
-            listView_EquipmentGeneralView.SelectedItem = null;
+            listView_EquipmentGeneralView.ItemsSource = EquipmentObjects;
         }
     }
 }
