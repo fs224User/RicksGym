@@ -1,0 +1,66 @@
+CREATE TABLE gym_Geraete (
+	machine_id varchar2(10),
+	name varchar2(255),
+	typ varchar2(255),
+	brand varchar2(255),
+	muscleGroup varchar2(255),
+	equipmentType varchar2(255),
+	status varchar2(255),
+	aquisitiontime date,
+	aquisitionprice number(10,2),
+	weightrange varchar2(255),
+	location varchar2(255),
+	dimension varchar2(255)
+);
+
+CREATE TABLE gym_Kurse ( 
+	kursid varchar2(10),
+	name varchar2(255),
+	description varchar2(255),
+	startingtime timestamp,
+	duration float,
+	capacity number(3,0),
+	participants number(3,0),
+	room varchar2(255)
+);
+
+CREATE TABLE gym_Kunden (
+	customer_id varchar2(10),
+	contractNumber varchar2(10),
+	zipCode varchar2(5),
+	lastName varchar2(255),
+	firstName varchar2(255),
+	birthday date,
+	telephone varchar2(255),
+	email varchar2(255),
+	streetName varchar2(255),
+	houseNumber number(3,0)
+);
+
+CREATE TABLE gym_Personal (
+	trainer_id varchar2(10),
+	firstName varchar2(255),
+	lastName varchar2(255),
+	email varchar(255),
+	telephone varchar2(255),
+	jobtitle varchar2(255),
+	salary number(10,2),
+	iban varchar2(255),
+	gender varchar2(255),
+	hiringDate date,
+	zipcode varchar2(5),
+	street varchar2(255),
+	hausnummer number(3,0)
+);
+
+CREATE TABLE gym_Vertraege (
+	contractNumber varchar2(10),
+	customer_id varchar2(10),
+	contractType varchar2(255),
+	amount number(10,2),
+	startingDate date,
+	status varchar2(255),
+	endDate date,
+	paymentMethod varchar2(255),
+	iban varchar2(255)
+);
