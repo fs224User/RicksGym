@@ -21,35 +21,39 @@ namespace EquipmentPage
     {
         public Equipment Equipment { get; set; }
         public List<Equipment> Equipments { get; set; }
+        public EquipmentLandingPage EquipmentLanding { get; set; }
 
-        public DetailEquipment(Equipment equipment, List<Equipment> equipments)
+        public DetailEquipment(Equipment equipment, List<Equipment> equipments, EquipmentLandingPage equipmentLandingPage)
         {
             InitializeComponent();
             Equipment = equipment;
             Equipments = equipments;
+            EquipmentLanding = equipmentLandingPage;
             SetTextBoxValues();
         }
 
         private void btn_Close_Click(object sender, RoutedEventArgs e)
         {
+            EquipmentLanding.UpdateSource(null, null);
+            EquipmentLanding.Activate();
             this.Close();
         }
 
         private void btn_Edit_Click(object sender, RoutedEventArgs e)
         {
-            var detailEquipmentPage = new EditEqupimentPage(Equipment);
+            var detailEquipmentPage = new EditEqupimentPage(Equipment, EquipmentLanding, this);
             detailEquipmentPage.Owner = this;
             detailEquipmentPage.ShowDialog();
         }
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
-            var deleteDialog = new DeleteDialog(Equipment.Id, Equipments, this);
+            var deleteDialog = new DeleteDialog(Equipment.Id, Equipments, this, EquipmentLanding);
             deleteDialog.Owner = this;
             deleteDialog.ShowDialog();
         }
 
-        private void SetTextBoxValues()
+        public void SetTextBoxValues()
         {
             textbox_Name.Text = Equipment.Name;
             textbox_Picture.Text = Equipment.Picture;
