@@ -83,7 +83,7 @@ namespace EquipmentPage
             {
                 var text = label_SortAfter.Content.ToString().Split(":")[1];
 
-                switch(text)
+                switch (text)
                 {
                     case " Name":
                         listView_EquipmentGeneralView.ItemsSource = EquipmentObjects.OrderBy(e => e.Name).ToList();
@@ -133,22 +133,26 @@ namespace EquipmentPage
 
         private void btn_AddEquipment_Click(object sender, RoutedEventArgs e)
         {
-            var addEquipmentPage = new AddEquipmentPage(EquipmentObjects);
+            var addEquipmentPage = new AddEquipmentPage(EquipmentObjects, this);
             addEquipmentPage.Owner = this;
             addEquipmentPage.ShowDialog();
         }
 
         private void listView_EquipmentGeneralView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = (Equipment)listView_EquipmentGeneralView.SelectedItem;
-            var detailEquipmentPage = new DetailEquipment(item, EquipmentObjects);
-            detailEquipmentPage.Owner = this;
-            detailEquipmentPage.ShowDialog();
+            if (listView_EquipmentGeneralView.SelectedItem is not null)
+            {
+                var item = (Equipment)listView_EquipmentGeneralView.SelectedItem;
+                var detailEquipmentPage = new DetailEquipment(item, EquipmentObjects, this);
+                detailEquipmentPage.Owner = this;
+                detailEquipmentPage.ShowDialog();
+            }
         }
 
-        private void btn_UpdateData_Click(object sender, RoutedEventArgs e)
+        public void UpdateSource(object sender, RoutedEventArgs e)
         {
-            listView_EquipmentGeneralView.ItemsSource = EquipmentObjects;
+            listView_EquipmentGeneralView.ItemsSource = EquipmentObjects.ToList();
+            listView_EquipmentGeneralView.SelectedItem = null;
         }
     }
 }

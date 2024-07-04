@@ -25,7 +25,7 @@
         <Button x:Name="btn_DeleteSearch" Content="X" HorizontalAlignment="Left" Height="34" Margin="585,10,0,0" VerticalAlignment="Top" Width="53" Click="btn_DeleteSearch_Click"/>
         <Button x:Name="btn_DeleteOrder" Content="X" HorizontalAlignment="Left" Height="44" Margin="838,54,0,0" VerticalAlignment="Top" Width="107" Click="btn_DeleteOrder_Click"/>
         <Button x:Name="btn_AddEquipment" Content="Hinzufügen" HorizontalAlignment="Center" Height="74" Margin="0,858,0,0" VerticalAlignment="Top" Width="452" Click="btn_AddEquipment_Click"/>
-        <Button x:Name="btn_UpdateData" Content="Aktualisieren" HorizontalAlignment="Left" Height="71" Margin="1786,27,0,0" VerticalAlignment="Top" Width="94" Click="btn_UpdateData_Click"/>
+        <Button x:Name="btn_UpdateData" Content="Aktualisieren" HorizontalAlignment="Left" Height="71" Margin="1786,27,0,0" VerticalAlignment="Top" Width="94" Click="UpdateSource"/>
 
     </Grid>
 </Window>

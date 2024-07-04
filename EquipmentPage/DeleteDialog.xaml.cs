@@ -22,12 +22,14 @@ namespace EquipmentPage
         public Equipment Equipment { get; set; }
         public List<Equipment> Equipments { get; set; }
         public DetailEquipment DetailEqupimentPage { get; set; }
+        public EquipmentLandingPage EquipmentLanding { get; set; }
 
-        public DeleteDialog(Guid id, List<Equipment> equipments, DetailEquipment detailEqupimentPage)
+        public DeleteDialog(Guid id, List<Equipment> equipments, DetailEquipment detailEqupimentPage, EquipmentLandingPage equipmentLanding)
         {
             InitializeComponent();
             Equipments = equipments;
             DetailEqupimentPage = detailEqupimentPage;
+            EquipmentLanding = equipmentLanding;
             Equipment = Equipments.Single(e => e.Id == id);
             SetLabel();
         }
@@ -41,6 +43,8 @@ namespace EquipmentPage
         {
             Equipments.Remove(Equipment);
             //TODO aus Db löschen
+            EquipmentLanding.UpdateSource(null, null);
+            EquipmentLanding.Activate();
             DetailEqupimentPage.Close();
             this.Close();
         }
