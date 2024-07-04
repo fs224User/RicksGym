@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using EmployeeManagement.Helper;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,11 @@ namespace EmployeeManagement
         {
             InitializeComponent();
 
-            List<Employee> mock = new List<Employee>();
-            mock.Add(new Employee(Guid.NewGuid(),"Leon", "Disselnmeyer", DateOnly.FromDateTime(DateTime.Now), "m", "leon.d@mail.com", "187420691337", "IT", "iland of nonya", "DE123456789101112", 3, "33106", "nesthauser", "1b"));
-            lvEmployee.ItemsSource = mock;
+            //List<Employee> mock = new List<Employee>();
+            //mock.Add(new Employee(Guid.NewGuid(), "Leon", "Disselnmeyer", DateOnly.FromDateTime(DateTime.Now), "m", "leon.d@mail.com", "187420691337", "IT", "iland of nonya", "DE123456789101112", 3, "33106", "nesthauser", "1b"));
+            //lvEmployee.ItemsSource = mock;
+
+            lvEmployee.ItemsSource = DatabaseHelper.GetAllEmployees();
 
         }
 
@@ -77,6 +80,20 @@ namespace EmployeeManagement
             {
                 EmployeeDetails employeeDetails = new EmployeeDetails(this, employee);
                 employeeDetails.ShowDialog();
+            }
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+                Employee employee = (Employee)lvEmployee.SelectedItem;
+                if (employee != null)
+                {
+                    EmployeeDetails employeeDetails = new EmployeeDetails(this, employee);
+                    employeeDetails.ShowDialog();
+                }
             }
         }
 

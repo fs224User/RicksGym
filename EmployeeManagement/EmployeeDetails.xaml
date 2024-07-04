@@ -15,8 +15,20 @@
                         <TextBox Name="tbLastname" FontSize="20" Width="200" Margin="0 0 20 0" IsEnabled="False" DockPanel.Dock="Left" />
                         <TextBox Name="tbJobtitle" FontSize="20" Width="200" IsEnabled="False" DockPanel.Dock="Left"/>
 
-                        <Button Name="btnEdit" Content="edit" DockPanel.Dock="Right" Margin="20 0" Click="btnEdit_Click"/>
-                        <Button Name="btnDelete" Content="delete" DockPanel.Dock="Right" Click="btnDelete_Click"/>
+                        <Button Name="btnEdit" Content="edit" DockPanel.Dock="Right" Margin="20 0" Click="btnEdit_Click" Background="LightGray" FontWeight="Bold">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"></Setter>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button Name="btnDelete" Content="delete" DockPanel.Dock="Right" Click="btnDelete_Click" Background="Red" FontWeight="Bold">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"></Setter>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                         <Separator DockPanel.Dock="Right" Visibility="Collapsed" />
                     </DockPanel>
 

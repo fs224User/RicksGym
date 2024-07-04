@@ -78,7 +78,16 @@ namespace EmployeeManagement
                 tbIban.IsEnabled = false;
 
                 //DbHelper.Update();
-
+                ((Employee)mainWindow.lvEmployee.SelectedItem).FirstName = tbFirstname.Text;
+                ((Employee)mainWindow.lvEmployee.SelectedItem).LastName = tbLastname.Text;
+                ((Employee)mainWindow.lvEmployee.SelectedItem).JobTitle = tbJobtitle.Text;
+                ((Employee)mainWindow.lvEmployee.SelectedItem).HiringDate = DateOnly.Parse(tbHiringDate.Text);
+                ((Employee)mainWindow.lvEmployee.SelectedItem).Gender = tbGender.Text;
+                ((Employee)mainWindow.lvEmployee.SelectedItem).Email = tbEmail.Text;
+                ((Employee)mainWindow.lvEmployee.SelectedItem).Phone = tbPhone.Text;
+                ((Employee)mainWindow.lvEmployee.SelectedItem).Salary = double.Parse(tbSalary.Text);
+                ((Employee)mainWindow.lvEmployee.SelectedItem).IBAN = tbIban.Text;
+                mainWindow.lvEmployee.Items.Refresh();
                 //
 
                 this.editMode = false;

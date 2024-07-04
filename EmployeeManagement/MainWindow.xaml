@@ -39,9 +39,13 @@
                                 <GridViewColumn Header="Vorname" DisplayMemberBinding="{Binding FirstName}" Width="300"/>
                                 <GridViewColumn Header="Nachname" DisplayMemberBinding="{Binding LastName}" Width="300"/>
                                 <GridViewColumn Header="Jobtitel" DisplayMemberBinding="{Binding JobTitle}" Width="300"/>
-                                
                             </GridView>
                         </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
                 </StackPanel>
             </TabItem>
